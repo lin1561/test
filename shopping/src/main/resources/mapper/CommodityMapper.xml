@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.CommodityMapper">
+    <select id="findAll" resultType="Commodity">
+        SELECT * FROM commodity
+    </select>
+    <select id="findById" resultType="Commodity">
+        SELECT * FROM commodity WHERE id = #{commodityId}
+    </select>
+    <update id="reduceStock">
+        UPDATE commodity
+        SET stock = stock-1
+        WHERE id = #{commodityId}
+        AND stock > 0
+    </update>
+</mapper>
